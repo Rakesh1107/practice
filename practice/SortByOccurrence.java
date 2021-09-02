@@ -20,7 +20,7 @@ public class SortByOccurrence {
             }
         }
 
-        final class FrequencyComparator implements Comparator<Integer> {
+        class FrequencyComparator implements Comparator<Integer> {
             Map<Integer,Integer> refMap;
 
             public FrequencyComparator(Map<Integer,Integer> base) {
@@ -29,18 +29,21 @@ public class SortByOccurrence {
 
             @Override
             public int compare(Integer k1, Integer k2) {
+                // Sort by values
                 Integer val1 = refMap.get(k1);
                 Integer val2 = refMap.get(k2);
-
                 int num = val1.compareTo(val2);
 
+                // If values are same, sort by key
                 return num == 0 ? k1.compareTo(k2) : num;
             }
         }
 
         FrequencyComparator comp = new FrequencyComparator(numbers);
+
         TreeMap<Integer,Integer> sortedMap = new TreeMap<>(comp);
         sortedMap.putAll(numbers);
+
         for(Integer i : sortedMap.keySet()) {
             int frequency = sortedMap.get(i);
             for(int count  = 1 ; count <= frequency ; count++) {

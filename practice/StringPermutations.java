@@ -3,8 +3,9 @@ package practice;
 public class StringPermutations {
 
     public static void main(String[] args) {
-        String word = "hello";
+        String word = "abc";
         permute(word);
+        Thread.dumpStack();
     }
 
     // TC - O(n*n!)

@@ -8,16 +8,12 @@ public class Tester {
         List<Integer> list = new LinkedList<>();
         list.add(10);
         list.add(20);
-
         addIntegers(list);
-
         System.out.println(list);
     }
 
     private static void addIntegers(List<Integer> list) {
-
-        list = new LinkedList<>();
-
+        list = null;
         System.out.println(list);
     }
 }

@@ -7,7 +7,7 @@ public class ReverseNumber {
     }
 
     private static void reverseNumber(int n) {
-        int reverse = 0, rem = 0;
+        int reverse = 0, rem;
 
         while (n != 0) {
             rem = n % 10;

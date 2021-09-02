@@ -1,5 +1,7 @@
 package dsimplementation;
 
+import java.util.NoSuchElementException;
+
 public class MyLinkedList<E> {
 
     private Node<E> head;
@@ -22,7 +24,7 @@ public class MyLinkedList<E> {
 
     public void remove(int index) {
         if (index + 1 > size()) {
-            return;
+            throw new IndexOutOfBoundsException();
         }
         if (index == 0) {
             head = head.next;
@@ -39,7 +41,7 @@ public class MyLinkedList<E> {
 
     public boolean contains(E data) {
         Node<E> temp = head;
-        while (temp.next != null) {
+        while (temp != null) {
             if (temp.data == data) {
                 return true;
             }
@@ -52,6 +54,19 @@ public class MyLinkedList<E> {
         return size;
     }
 
+    // Stack methods
+    // Pop method
+
+    public E removeLast() {
+        Node<E> temp = head;
+        while (temp.next.next != null) {
+            temp = temp.next;
+        }
+        E val = temp.next.data;
+        temp.next = null;
+        return val;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -61,6 +76,16 @@ public class MyLinkedList<E> {
             temp = temp.next;
         }
         return sb.toString();
+    }
+
+    // Queue methods
+    public E removeFirst() {
+        if (head == null) {
+            throw new NoSuchElementException();
+        }
+        E val = head.data;
+        head = head.next;
+        return val;
     }
 
     private static class Node<E> {
